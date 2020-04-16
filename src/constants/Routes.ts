@@ -5,3 +5,5 @@ export const ROUTE_REGISTRATION_ANSWER: string = '/registrationAnswer';
 export const ROUTE_SIGN_IN: string = '/signIn';
 export const ROUTE_FORGOT_PASSWORD: string = '/forgotPassword';
 export const ROUTE_PROFILE: string = '/profile';
+export const ROUTE_PROFILE_EDIT: string = '/editProfile';
+export const ROUTE_MY_PROFILE: string = '/myprofile';

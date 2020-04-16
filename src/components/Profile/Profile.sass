@@ -1,0 +1,21 @@
+.Profile
+    background: #121212
+    .ProfileHead
+        display: grid
+        align-items: center
+        justify-content: center
+        grid-template-columns: 8fr 2fr
+        .ProfileHeadNick
+            text-decoration: underline
+        .ProfileHeadHamburger,
+        .ProfileHeadHamburger::after,
+        .ProfileHeadHamburger::before
+            display: block
+            height: 2px
+            background-color: #FFFFFF
+            &::after
+                content: ''
+                top: 8px
+            &::before
+                content: ''
+                top: -8px

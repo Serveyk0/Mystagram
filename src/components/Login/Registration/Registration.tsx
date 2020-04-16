@@ -24,9 +24,7 @@ export const Registration: React.FC = ( ) => {
                     </Route>
                     <Route path={ ROUTE_REGISTRATION_ANSWER }>
                         <RegistrationAnswer userName={userName} userPassword={userPassword} />
-                    </Route>
-
-                    
+                    </Route>                    
 				</Switch>
                 </div>
                 <div>

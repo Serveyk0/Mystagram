@@ -3,12 +3,14 @@ import './SignIn.sass'
 import { NavLink, Redirect, Route } from 'react-router-dom';
 import { ROUTE_FORGOT_PASSWORD, ROUTE_PROFILE, ROUTE_EMAIL } from '../../../constants/Routes'
 import firebase from '../../../firebase'
+import { connect } from 'react-redux';
 
-export const SignIn = ( props: any ) => {
+const SignIn = ( props: any ) => {
 
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
     const [error, setError] = useState("err");
+    // const [changeUserId] = props;
 
     const handleChangeEmail = () => (e: { target: { value: string; }; }) => {
         setUserEmail(e.target.value);
@@ -19,8 +21,15 @@ export const SignIn = ( props: any ) => {
     }
 
     const login = () => {
-        firebase.auth().signInWithEmailAndPassword(userEmail, userPassword).then((u)=>{
-            setError('') 
+        firebase.auth().signInWithEmailAndPassword(userEmail, userPassword).then((u: any)=>{     
+            setError('');
+            const userId = u.user.uid;
+            props.changeUserId(userId);
+            const dataRef = firebase.database().ref('/users');
+            console.log(dataRef.orderByChild(userId).equalTo("sergo"))
+            if(!dataRef.equalTo(userId))
+                dataRef.child(userId).set({nickname:''});
+
         }).catch((errorr: any) => {
             setError(errorr);   
         })
@@ -53,3 +62,19 @@ export const SignIn = ( props: any ) => {
         </>
     )
 }
+
+const mapStateToProps = (state: any) => {
+	return {
+      userId: state.userId,
+    }
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        changeUserId: (uID: string) => {
+            dispatch({ type: 'USER_ID', userId: uID });
+          }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn); 
