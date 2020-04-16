@@ -1,12 +1,14 @@
 .Profile
     background: #121212
+    min-height: 100vh
     display: grid
-    grid-template-rows: 60px 60px auto
+    grid-row-gap: 10px
+    grid-template-rows: 30px 60px 30px 65px auto
     .ProfileHead
         display: grid
         align-items: center
         justify-content: center
-        grid-template-columns: 8fr 2fr
+        grid-template-columns: 1fr 40px
         .ProfileHeadNick
             text-decoration: underline
             font-family: Montserrat
@@ -21,7 +23,7 @@
         .ProfileHeadHamburger::after,
         .ProfileHeadHamburger::before
             display: block
-            max-width: 35px
+            max-width: 20px
             height: 2px
             background-color: #FFFFFF
         .ProfileHeadHamburger
@@ -31,10 +33,14 @@
                 position: relative
                 width: 100%
             &::after
-                top: 8px
+                top: 5px
             &::before
-                top: -10px
+                top: -7px
     .ProfileInformation
+        display: grid
+        grid-template-columns: 80px auto
+        width: 90%
+        margin: 0 auto
         .ProfileInformationAvatar
             width: 60px
             height: 60px
@@ -44,17 +50,87 @@
             background: url('../../images/photo.png')
             background-size: cover
             border-radius: 60px
-        .ProfileInformationAvatarPlus
+            .ProfileInformationAvatarPlus
+                color: white
+                background-color: #7ab5e4
+                width: 15px
+                height: 15px
+                font-size: 13px
+                justify-content: center
+                align-items: flex-end
+                display: flex
+                border-radius: 60px
+                border: 1px solid black
+                position: absolute
+                bottom: 5px
+                right: -5px
+        .ProfileInformationAbout
+            display: grid
+            grid-template-columns: repeat(3, 1fr)
+            font-size: 10px
             color: white
-            background-color: #7ab5e4
-            width: 15px
-            height: 15px
-            font-size: 13px
             justify-content: center
-            align-items: flex-end
-            display: flex
-            border-radius: 60px
-            border: 1px solid black
-            position: absolute
-            bottom: 5px
-            right: -5px
+            align-items: center
+            .ProfileInformationAboutPublication,
+            .ProfileInformationAboutSubscribers,
+            .ProfileInformationAboutSubscriptions
+                display: grid
+                grid-template-rows: repeat(2, 20px)
+                justify-content: center
+                align-items: center
+            .ProfileInformationAboutPublicationCount,
+            .ProfileInformationAboutPublicationText,
+            .ProfileInformationAboutSubscribersCount,
+            .ProfileInformationAboutSubscribersText,
+            .ProfileInformationAboutSubscriptionsCount,
+            .ProfileInformationAboutSubscriptionsText
+                display: grid
+                justify-content: center
+                align-items: center
+            .ProfileInformationAboutSubscribersCount,
+            .ProfileInformationAboutPublicationCount,
+            .ProfileInformationAboutSubscriptionsCount
+                font-size: 15px
+    .ProfileEdit
+        display: grid
+        justify-content: center
+        align-items: center
+        width: 280px
+        margin: 0 auto
+        background: #000000
+        border: 1px solid #303030
+        box-sizing: border-box
+        box-shadow: 0px 0px 2px #303030
+        border-radius: 5px
+        .ProfileEditLink
+            text-align: center
+            text-decoration: none
+            margin-bottom: 2px
+            color: #FFFFFF
+    .ProfileSavedHistory
+        display: grid
+        width: 90%
+        margin: 0 auto
+        align-items: center
+        grid-template-columns: repeat(auto-fit, 50px)
+        grid-column-gap: 20px
+        .ProfileSavedHistoryAdd
+            height: 50px
+            width: 50px
+            border-radius: 50px
+            border: 1px solid #202020
+            .ProfileSavedHistoryAddPlus
+                color: #ffffff
+                width: 100%
+                height: 100%
+                display: grid
+                justify-content: center
+                align-items: center
+                padding: 0
+                margin: 0
+                font-size: 40px
+                margin-top: -6px
+            .ProfileSavedHistoryAddImage
+                width: 100%
+                height: 100%
+                

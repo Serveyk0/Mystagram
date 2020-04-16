@@ -14,37 +14,37 @@ const Profile = ( props: any ) => {
 
   console.log(userId)
 
-  useEffect(() => {
-    firebase.database().ref('users/' + userId + '/nickname').on('value', function (snapshot) {
-      if(snapshot.val() != '' && !inputName)
-        setInputName(!inputName);
-    });
-  }, [])
+  // useEffect(() => {
+  //   firebase.database().ref('users/' + userId + '/nickname').on('value', function (snapshot) {
+  //     if(snapshot.val() != '' && !inputName)
+  //       setInputName(!inputName);
+  //   });
+  // }, [])
 
   const handleChangeName = () => (e: { target: { value: string; }; }) => {
-    setUserName(e.target.value);
+    // setUserName(e.target.value);
   }
 
   const saveName = () => {
-    firebase.database().ref('/users').child(userId).set({
-      nickname: userName
-    })
+  //   firebase.database().ref('/users').child(userId).set({
+  //     nickname: userName
+  //   })
   }
 
 
 
-  if(!inputName)
-  {
-    return (
-      <div>
-        <p>Введите имя</p>
-        <input placeholder='Имя :' onChange={handleChangeName()} />
-        <button onClick={saveName}></button>
-      </div>
-    )
-  }
-  else
-  {
+  // if(!inputName)
+  // {
+  //   return (
+  //     <div>
+  //       <p>Введите имя</p>
+  //       <input placeholder='Имя :' onChange={handleChangeName()} />
+  //       <button onClick={saveName}></button>
+  //     </div>
+  //   )
+  // }
+  // else
+  // {
     return (
       <div className='Profile'>
         <div className='ProfileHead'>
@@ -72,14 +72,14 @@ const Profile = ( props: any ) => {
             </div>
           </div>
         </div>
-        {/* <div className='ProfileEdit'>
+        <div className='ProfileEdit'>
           <NavLink className='ProfileEditLink' to={ROUTE_PROFILE_EDIT}>Редактировать профиль</NavLink>
         </div>
         <div className='ProfileSavedHistory'>
-          <div className='ProfileSavedHistoryAdd'></div>
-          <div className='ProfileSavedHistoryAdd'></div>
+          <div className='ProfileSavedHistoryAdd'><p className='ProfileSavedHistoryAddPlus'>+</p></div>
+          <div className='ProfileSavedHistoryAdd'><img className='ProfileSavedHistoryAddImage' alt="photo" src={Photo} /></div>
         </div>
-        <div className='ProfileAndMarked'>
+        {/* <div className='ProfileAndMarked'>
           <NavLink className='ProfileAndMarkedProfile' to={ROUTE_MY_PROFILE}>
             <img alt='Grid pane' src={Photo} />
           </NavLink>
@@ -107,7 +107,7 @@ const Profile = ( props: any ) => {
         </div> */}
       </div>
     );
-  }
+  // }
 };
 
 const mapStateToProps = (state: any) => {
