@@ -1,5 +1,7 @@
 .Profile
     background: #121212
+    display: grid
+    grid-template-rows: 60px 60px auto
     .ProfileHead
         display: grid
         align-items: center
@@ -7,15 +9,52 @@
         grid-template-columns: 8fr 2fr
         .ProfileHeadNick
             text-decoration: underline
+            font-family: Montserrat
+            font-style: normal
+            font-weight: bold
+            font-size: 14px
+            line-height: 17px
+            text-align: center
+            text-decoration-line: underline
+            color: #FFFFFF
         .ProfileHeadHamburger,
         .ProfileHeadHamburger::after,
         .ProfileHeadHamburger::before
             display: block
+            max-width: 35px
             height: 2px
             background-color: #FFFFFF
-            &::after
-                content: ''
-                top: 8px
+        .ProfileHeadHamburger
+            &::after,            
             &::before
                 content: ''
-                top: -8px
+                position: relative
+                width: 100%
+            &::after
+                top: 8px
+            &::before
+                top: -10px
+    .ProfileInformation
+        .ProfileInformationAvatar
+            width: 60px
+            height: 60px
+            background-color: black
+            position: relative
+            z-index: 2
+            background: url('../../images/photo.png')
+            background-size: cover
+            border-radius: 60px
+        .ProfileInformationAvatarPlus
+            color: white
+            background-color: #7ab5e4
+            width: 15px
+            height: 15px
+            font-size: 13px
+            justify-content: center
+            align-items: flex-end
+            display: flex
+            border-radius: 60px
+            border: 1px solid black
+            position: absolute
+            bottom: 5px
+            right: -5px

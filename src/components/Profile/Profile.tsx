@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Photo from '../../images/photo.png';
 import { NavLink } from 'react-router-dom';
 import { ROUTE_PROFILE_EDIT, ROUTE_MY_PROFILE } from '../../constants/Routes';
 import { connect } from 'react-redux';
 import firebase from '../../firebase';
+import './Profile.sass';
 
 const Profile = ( props: any ) => {
+  const { userId } = props.userId;
 
   const [userName, setUserName] = useState("");
   const [inputName, setInputName] = useState(false);
 
-  const { userId } = props.userId;
+  console.log(userId)
+
+  useEffect(() => {
+    firebase.database().ref('users/' + userId + '/nickname').on('value', function (snapshot) {
+      if(snapshot.val() != '' && !inputName)
+        setInputName(!inputName);
+    });
+  }, [])
 
   const handleChangeName = () => (e: { target: { value: string; }; }) => {
     setUserName(e.target.value);
@@ -22,10 +31,7 @@ const Profile = ( props: any ) => {
     })
   }
 
-  firebase.database().ref('users/' + userId + '/nickname').on('value', function (snapshot) {
-    if(snapshot.val() != '' && !inputName)
-      setInputName(!inputName);
-  });
+
 
   if(!inputName)
   {
@@ -40,8 +46,8 @@ const Profile = ( props: any ) => {
   else
   {
     return (
-      <div className='Profile'>Profile
-        {/* <div className='ProfileHead'>
+      <div className='Profile'>
+        <div className='ProfileHead'>
           <p className='ProfileHeadNick'>
             19.19.2000
           </p>
@@ -49,8 +55,7 @@ const Profile = ( props: any ) => {
         </div>
         <div className='ProfileInformation'>
           <div className='ProfileInformationAvatar'>
-            <img className='ProfileInformationAvatarPhoto' alt='Photo' src={ Photo } />
-            <p className='ProfileInformationAvatarPlus'>+</p>
+            <div className='ProfileInformationAvatarPlus'>+</div>
           </div>
           <div className='ProfileInformationAbout'>
             <div className='ProfileInformationAboutPublication'>
@@ -67,7 +72,7 @@ const Profile = ( props: any ) => {
             </div>
           </div>
         </div>
-        <div className='ProfileEdit'>
+        {/* <div className='ProfileEdit'>
           <NavLink className='ProfileEditLink' to={ROUTE_PROFILE_EDIT}>Редактировать профиль</NavLink>
         </div>
         <div className='ProfileSavedHistory'>
