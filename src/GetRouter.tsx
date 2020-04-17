@@ -5,6 +5,7 @@ import MainPage from './components/MainPage';
 import { ROUTE_MAIN_PAGE, ROUTE_EMAIL, ROUTE_PASSWORD, ROUTE_REGISTRATION_ANSWER, ROUTE_SIGN_IN, ROUTE_PROFILE } from './constants/Routes'
 import SignIn from './components/Login/SignIn';
 import Profile from './components/Profile';
+import FooterMenu from './components/FooterMenu';
 
 export const GetRouter: React.FC = ( ) => {
 	return(
@@ -25,7 +26,10 @@ export const GetRouter: React.FC = ( ) => {
             <SignIn />
         )}} />
         <Route exact path={ ROUTE_PROFILE } render={() => {return(
-            <Profile />
+            <div className='MainAppPage'>
+                <Profile />
+                <FooterMenu />
+            </div>
         )}} />
         </Switch>
     )
