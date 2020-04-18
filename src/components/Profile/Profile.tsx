@@ -3,10 +3,13 @@ import Photo from '../../images/photo.png';
 import GridPane from '../../images/Profile/Grid.png';
 import Marked from '../../images/Profile/Marked.png';
 import { NavLink } from 'react-router-dom';
-import { ROUTE_PROFILE_EDIT, ROUTE_MY_PROFILE } from '../../constants/Routes';
+import { ROUTE_PROFILE_EDIT } from '../../constants/Routes';
 import { connect } from 'react-redux';
 import firebase from '../../firebase';
 import './Profile.sass';
+import Loader from '../Loader';
+import FooterMenu from '../FooterMenu';
+import ProfileImagesList from './ProfileImages/ProfileImagesList';
 
 const Profile = ( props: any ) => {
   const { userId } = props.userId;
@@ -15,6 +18,9 @@ const Profile = ( props: any ) => {
   const [loadCheck, setLoadCheck] = useState(true);
   const [inputName, setInputName] = useState(false);
   const [tab, setTab] = useState(false);
+  const [view, setView] = useState(true);
+  const [imagesList, setImagesList] = useState(false);
+  
 
 
   useEffect(() => {
@@ -36,10 +42,9 @@ const Profile = ( props: any ) => {
     })
   }
 
-  alert(userId);
   if(loadCheck)
   {
-    return <div>Loading</div>
+    return <Loader />
   }
   else 
   {
@@ -56,13 +61,17 @@ const Profile = ( props: any ) => {
     else
     {
       return (
+        <>
         <div className='Profile'>
+          <div className='ProfileMain'>
           <div className='ProfileHead'>
             <p className='ProfileHeadNick'>
               {userName}
             </p>
             <div className='ProfileHeadHamburger' />
           </div>
+          {view &&
+          <>
           <div className='ProfileInformation'>
             <div className='ProfileInformationAvatar'>
               <img className='ProfileInformationAvatarPhoto' alt='photo' src={Photo} />
@@ -119,33 +128,19 @@ const Profile = ( props: any ) => {
               </div>
               <div className={tab ? 'ProfileAndMarkedActiveLine' : ''} />
             </div>
-          </div>
+          </div> 
+          </>
+          }
           { !tab ? 
-          <div className='ProfileImages'>
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-            <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-          </div>
+          <ProfileImagesList setView={setView} imagesList={imagesList} setImagesList={setImagesList} />
           :
           <div className='ProfileImages'>
             <img className='ProfileImagesPhoto' alt='My photo' src={Photo} />
-          </div>}
+          </div>}  
+          </div>
+        <FooterMenu />
         </div>
+        </>
       );
     }
   }

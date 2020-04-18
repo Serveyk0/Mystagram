@@ -28,7 +28,7 @@ export const GetRouter: React.FC = ( ) => {
         <Route exact path={ ROUTE_PROFILE } render={() => {return(
             <div className='MainAppPage'>
                 <Profile />
-                <FooterMenu />
+                {/* <FooterMenu /> */}
             </div>
         )}} />
         </Switch>

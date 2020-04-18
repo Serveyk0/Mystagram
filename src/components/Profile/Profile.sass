@@ -1,189 +1,182 @@
 .Profile
     background: #121212
-    height: calc(100vh - 50px)
+    min-height: 100vh
     display: grid
-    grid-row-gap: 10px
     overflow: auto
-    grid-template-rows: 30px 60px 30px 80px 33px auto
-    .ProfileHead
+    .ProfileMain
         display: grid
-        align-items: center
-        justify-content: center
-        grid-template-columns: 1fr 40px
-        .ProfileHeadNick
-            text-decoration: underline
-            font-family: Montserrat
-            font-style: normal
-            font-weight: bold
-            font-size: 14px
-            line-height: 17px
-            text-align: center
-            text-decoration-line: underline
-            color: #FFFFFF
-        .ProfileHeadHamburger,
-        .ProfileHeadHamburger::after,
-        .ProfileHeadHamburger::before
-            display: block
-            max-width: 20px
-            height: 2px
-            background-color: #FFFFFF
-        .ProfileHeadHamburger
-            &::after,            
-            &::before
-                content: ''
+        overflow: auto
+        grid-template-rows: 30px 60px 30px 80px 33px auto
+        grid-row-gap: 10px
+        margin-bottom: 50px
+        .ProfileHead
+            display: grid
+            align-items: center
+            justify-content: center
+            grid-template-columns: 1fr 40px
+            .ProfileHeadNick
+                text-decoration: underline
+                font-family: Montserrat
+                font-style: normal
+                font-weight: bold
+                font-size: 14px
+                line-height: 17px
+                text-align: center
+                text-decoration-line: underline
+                color: #FFFFFF
+            .ProfileHeadHamburger,
+            .ProfileHeadHamburger::after,
+            .ProfileHeadHamburger::before
+                display: block
+                max-width: 20px
+                height: 2px
+                background-color: #FFFFFF
+            .ProfileHeadHamburger
+                &::after,            
+                &::before
+                    content: ''
+                    position: relative
+                    width: 100%
+                &::after
+                    top: 5px
+                &::before
+                    top: -7px
+        .ProfileInformation
+            display: grid
+            grid-template-columns: 80px auto
+            width: 90%
+            margin: 0 auto
+            .ProfileInformationAvatar
+                width: 60px
+                height: 60px
                 position: relative
-                width: 100%
-            &::after
-                top: 5px
-            &::before
-                top: -7px
-    .ProfileInformation
-        display: grid
-        grid-template-columns: 80px auto
-        width: 90%
-        margin: 0 auto
-        .ProfileInformationAvatar
-            width: 60px
-            height: 60px
-            position: relative
-            z-index: 2
-            border-radius: 60px
-            .ProfileInformationAvatarPhoto
-                width: 100%
-                height: 100%
-                border-radius: 50px
-            .ProfileInformationAvatarPlus
-                color: white
-                background-color: #7ab5e4
-                width: 15px
-                height: 15px
-                font-size: 13px
-                justify-content: center
-                align-items: flex-end
-                display: flex
+                z-index: 2
                 border-radius: 60px
-                border: 1px solid black
-                position: absolute
-                bottom: 5px
-                right: -5px
-        .ProfileInformationAbout
-            display: grid
-            grid-template-columns: repeat(3, 1fr)
-            font-size: 10px
-            color: white
-            justify-content: center
-            align-items: center
-            .ProfileInformationAboutPublication,
-            .ProfileInformationAboutSubscribers,
-            .ProfileInformationAboutSubscriptions
-                display: grid
-                grid-template-rows: repeat(2, 20px)
-                justify-content: center
-                align-items: center
-            .ProfileInformationAboutPublicationCount,
-            .ProfileInformationAboutPublicationText,
-            .ProfileInformationAboutSubscribersCount,
-            .ProfileInformationAboutSubscribersText,
-            .ProfileInformationAboutSubscriptionsCount,
-            .ProfileInformationAboutSubscriptionsText
-                display: grid
-                justify-content: center
-                align-items: center
-            .ProfileInformationAboutSubscribersCount,
-            .ProfileInformationAboutPublicationCount,
-            .ProfileInformationAboutSubscriptionsCount
-                font-size: 15px
-    .ProfileEdit
-        display: grid
-        justify-content: center
-        align-items: center
-        width: 280px
-        margin: 0 auto
-        background: #000000
-        border: 1px solid #303030
-        box-sizing: border-box
-        box-shadow: 0px 0px 2px #303030
-        border-radius: 5px
-        .ProfileEditLink
-            text-align: center
-            text-decoration: none
-            margin-bottom: 2px
-            color: #FFFFFF
-    .ProfileSavedHistory
-        display: grid
-        width: 90%
-        margin: 0 auto
-        grid-template-columns: repeat(auto-fit, 50px)
-        grid-column-gap: 20px
-        .ProfileSavedHistoryAdd
-            height: 50px
-            width: 50px
-            border-radius: 50px
-            border: 1px solid #202020
-            display: grid
-            justify-content: center
-            align-items: center
-            grid-row-gap: 5px
-            grid-template-rows: 50px 20px
-            .ProfileSavedHistoryAddStories,
-            .ProfileSavedHistoryAddNew
-                height: 44px
-                width: 44px
-                margin: 0 auto
-                .ProfileSavedHistoryAddStoriesImage
+                .ProfileInformationAvatarPhoto
                     width: 100%
                     height: 100%
                     border-radius: 50px
-                    // border: 3px solid white
-                    // border: solid 3px transparent
-                    // background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #78e4ff, #ff48fa)
-                    // background-origin: border-box
-            .ProfileSavedHistoryAddPlus
-                color: #ffffff
-                width: 100%
-                height: 100%
+                .ProfileInformationAvatarPlus
+                    color: white
+                    background-color: #7ab5e4
+                    width: 15px
+                    height: 15px
+                    font-size: 13px
+                    justify-content: center
+                    align-items: flex-end
+                    display: flex
+                    border-radius: 60px
+                    border: 1px solid black
+                    position: absolute
+                    bottom: 5px
+                    right: -5px
+            .ProfileInformationAbout
                 display: grid
+                grid-template-columns: repeat(3, 1fr)
+                font-size: 10px
+                color: white
                 justify-content: center
                 align-items: center
-                padding: 0
-                margin: -9px 0 0px 0
-                font-size: 40px
-            
-            .ProfileSavedHistoryAddText
-                color: #ffffff        
-                font-size: 14px
-                font-weight: normal
-                margin: 0
-                padding: 0
-                text-align: center
-    .ProfileAndMarked
-        display: grid
-        justify-content: center
-        align-items: center
-        grid-template-columns: 1fr 1fr
-        border-top: 1px solid #222222
-        padding-top: 5px
-        .ProfileAndMarkedProfile
+                .ProfileInformationAboutPublication,
+                .ProfileInformationAboutSubscribers,
+                .ProfileInformationAboutSubscriptions
+                    display: grid
+                    grid-template-rows: repeat(2, 20px)
+                    justify-content: center
+                    align-items: center
+                .ProfileInformationAboutPublicationCount,
+                .ProfileInformationAboutPublicationText,
+                .ProfileInformationAboutSubscribersCount,
+                .ProfileInformationAboutSubscribersText,
+                .ProfileInformationAboutSubscriptionsCount,
+                .ProfileInformationAboutSubscriptionsText
+                    display: grid
+                    justify-content: center
+                    align-items: center
+                .ProfileInformationAboutSubscribersCount,
+                .ProfileInformationAboutPublicationCount,
+                .ProfileInformationAboutSubscriptionsCount
+                    font-size: 15px
+        .ProfileEdit
             display: grid
             justify-content: center
             align-items: center
-            .ProfileAndMarkedProfileHref
+            width: 280px
+            margin: 0 auto
+            background: #000000
+            border: 1px solid #303030
+            box-sizing: border-box
+            box-shadow: 0px 0px 2px #303030
+            border-radius: 5px
+            .ProfileEditLink
                 text-align: center
-                width: 50vw
-                .ProfileAndMarkedProfileHrefGrid,
-                .ProfileAndMarkedProfileHrefMarked
-                    width: 30px
-                    height: 30px
-            .ProfileAndMarkedActiveLine
-                border-bottom: 2px solid #ffffff
-    .ProfileImages
-        display: grid
-        justify-content: center
-        align-items: center
-        grid-template-columns: 1fr 1fr 1fr
-        grid-column-gap: 2px
-        grid-row-gap: 2px
-        grid-template-rows: repeat(auto-fit, 33vw)
-        .ProfileImagesPhoto
-            width: 33vw
-            height: 33vw
+                text-decoration: none
+                margin-bottom: 2px
+                color: #FFFFFF
+        .ProfileSavedHistory
+            display: grid
+            width: 90%
+            margin: 0 auto
+            grid-template-columns: repeat(auto-fit, 50px)
+            grid-column-gap: 20px
+            .ProfileSavedHistoryAdd
+                height: 50px
+                width: 50px
+                border-radius: 50px
+                border: 1px solid #202020
+                display: grid
+                justify-content: center
+                align-items: center
+                grid-row-gap: 5px
+                grid-template-rows: 50px 20px
+                .ProfileSavedHistoryAddStories,
+                .ProfileSavedHistoryAddNew
+                    height: 44px
+                    width: 44px
+                    margin: 0 auto
+                    .ProfileSavedHistoryAddStoriesImage
+                        width: 100%
+                        height: 100%
+                        border-radius: 50px
+                        // border: 3px solid white
+                        // border: solid 3px transparent
+                        // background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #78e4ff, #ff48fa)
+                        // background-origin: border-box
+                .ProfileSavedHistoryAddPlus
+                    color: #ffffff
+                    width: 100%
+                    height: 100%
+                    display: grid
+                    justify-content: center
+                    align-items: center
+                    padding: 0
+                    margin: -9px 0 0px 0
+                    font-size: 40px
+                
+                .ProfileSavedHistoryAddText
+                    color: #ffffff        
+                    font-size: 14px
+                    font-weight: normal
+                    margin: 0
+                    padding: 0
+                    text-align: center
+        .ProfileAndMarked
+            display: grid
+            justify-content: center
+            align-items: center
+            grid-template-columns: 1fr 1fr
+            border-top: 1px solid #222222
+            padding-top: 5px
+            .ProfileAndMarkedProfile
+                display: grid
+                justify-content: center
+                align-items: center
+                .ProfileAndMarkedProfileHref
+                    text-align: center
+                    width: 50vw
+                    .ProfileAndMarkedProfileHrefGrid,
+                    .ProfileAndMarkedProfileHrefMarked
+                        width: 30px
+                        height: 30px
+                .ProfileAndMarkedActiveLine
+                    border-bottom: 2px solid #ffffff

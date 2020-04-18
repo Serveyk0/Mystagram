@@ -14,5 +14,4 @@ code {
 
 .MainAppPage {
   display: grid;
-  grid-template-rows: auto 50px;
 }
